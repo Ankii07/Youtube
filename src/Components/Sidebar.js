@@ -45,7 +45,7 @@ const Sidebar = () => {
   return (
     <div
       ref={sidebarRef}
-      className="p-5 shadow-lg col-span-2 justify-items-start z-10 bg-slate-100 "
+     className={`p-5 shadow-lg col-span-2 justify-items-start z-10 bg-slate-100 ${!isMenuOpen && 'hidden'}`}
     >
       <h1 className="font-bold text-xl font-serif">Subscriptions</h1>
       <ul className="text-lg font-serif">

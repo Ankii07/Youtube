@@ -104,8 +104,8 @@ const Comment = ({data}) => {
             <div className='flex gap-4 min-w-[50vw] mt-5'>
                 <img className='min-w-10 min-h-10 max-h-10 rounded-full' src={my_pic} alt="" />
                 <div className='flex flex-col  gap-2 min-w-[350px]'>
-                <p className='font-bold text-sm  absolute '>{name}</p>
-                <p className=' mt-4 min-w-[50vw] flex'>{text}</p>
+                <p className='font-bold text-sm flex '>{name}</p>
+                <p className=' mt-1 min-w-[50vw] flex'>{text}</p>
                 </div>
             </div>
     
@@ -142,7 +142,7 @@ const CommentList = ({comments}) => {
 const CommentContainer = () => {
     return (
         <div className='flex flex-col max-w-[50vw]'>
-        <h1 className='font-bold text-2xl font-serif -ml-[50px]'>Comments:</h1>
+        <h1 className='font-bold text-2xl font-serif flex'>Comments:</h1>
          {/* <Comment data={commentData[0]}/> */}
          <CommentList comments = {commentData}/>
         </div>

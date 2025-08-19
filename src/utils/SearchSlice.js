@@ -1,16 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { YOUTUBE_VIDEOS_API } from "./constants";
 
 const searchSlice = createSlice({
     name: "search",
     initialState: {
-        // searchCache: {},
+        videos: [],
     },
     reducers: {
-       cacheResults: (state, action) => {
-           state= Object.assign(state, action.payload);
-       }
+        cacheResults: (state, action) => {
+            // Correct way to merge state in Redux Toolkit
+            return { ...state, ...action.payload };
+        },
+        setVideos: (state, action) => {
+            // Correct mutation pattern (Immer handles immutability)
+            state.videos = action.payload;
+        },
     },
 });
 
-export const {cacheResults} = searchSlice.actions;
+export const { cacheResults, setVideos } = searchSlice.actions;
+
+// Export the async thunk for fetching videos
+export const fetchVideos = () => async (dispatch) => {
+    try {
+        const response = await fetch(YOUTUBE_VIDEOS_API);
+        const data = await response.json();
+        dispatch(setVideos(data.items));
+    } catch (error) {
+        console.error("Error fetching videos:", error);
+    }
+};
+
 export default searchSlice.reducer;

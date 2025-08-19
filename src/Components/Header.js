@@ -53,7 +53,7 @@ const Header = () => {
        setQuerySuggestion(searchCache[SearchQuery]);
       }
       else{
-        // getSearchSuggestions()
+        getSearchSuggestions()
       }},200);
     
     return () => clearTimeout(timer);
@@ -100,7 +100,10 @@ const Header = () => {
   const handleMenuClick = () => {
     dispatch(toggleMenu());
   };
-
+  
+  const handleSearchClick = () => {
+    console.log("Search Clicked");
+  }
 
 
   return (
@@ -138,7 +141,7 @@ const Header = () => {
               alt="Search_Icon"
             />
           </button>
-          <div>
+          <div onClick={handleSearchClick}>
             <img
               className="min-w-8 max-h-7 absolute right-2 top-2"
               src={search_Icon}
