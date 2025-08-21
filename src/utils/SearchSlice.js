@@ -5,6 +5,7 @@ const searchSlice = createSlice({
     name: "search",
     initialState: {
         videos: [],
+        searchClicked: false,
     },
     reducers: {
         cacheResults: (state, action) => {
@@ -15,20 +16,23 @@ const searchSlice = createSlice({
             // Correct mutation pattern (Immer handles immutability)
             state.videos = action.payload;
         },
+        setSearchClicked: (state) => {
+            state.searchClicked = true;
+        },
     },
 });
 
-export const { cacheResults, setVideos } = searchSlice.actions;
+export const { cacheResults, setVideos, setSearchClicked } = searchSlice.actions;
 
 // Export the async thunk for fetching videos
-export const fetchVideos = () => async (dispatch) => {
-    try {
-        const response = await fetch(YOUTUBE_VIDEOS_API);
-        const data = await response.json();
-        dispatch(setVideos(data.items));
-    } catch (error) {
-        console.error("Error fetching videos:", error);
-    }
-};
+// export const fetchVideos = () => async (dispatch) => {
+//     try {
+//         const response = await fetch(YOUTUBE_VIDEOS_API);
+//         const data = await response.json();
+//         dispatch(setVideos(data.items));
+//     } catch (error) {
+//         console.error("Error fetching videos:", error);
+//     }
+// };
 
 export default searchSlice.reducer;

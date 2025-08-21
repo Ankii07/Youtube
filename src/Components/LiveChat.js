@@ -17,15 +17,15 @@ const LiveChat = () => {
 
   // console.log(input_value)
 
-  // useEffect(() => {
-  //   const i = setInterval(() => {
-  //     // API Polling
-  //     console.log("API Polling");
-  //     dispatch(addMessage({ name: generateRandomName(), message: "Hello World" }))
-  //   }, 1500);
-  //   // Always clear the interval
-  //   return () => clearInterval(i);
-  // }, []);
+  useEffect(() => {
+    const i = setInterval(() => {
+      // API Polling
+      console.log("API Polling");
+      dispatch(addMessage({ name: generateRandomName(), message: "Hello World" }))
+    }, 1500);
+    // Always clear the interval
+    return () => clearInterval(i);
+  }, []);
 
   const handleInput = () => {
       SetLiveMessage(input_value.current.value);   
