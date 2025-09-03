@@ -3,6 +3,7 @@ import ChatMessage from './ChatMessage'
 import { useDispatch, useSelector } from 'react-redux';
 import { addMessage } from '../utils/ChatSlice';
 import { generateRandomName } from '../utils/Helper';
+import { generateRandomComment } from './Random_Comment';
 
 
 const LiveChat = () => {
@@ -21,7 +22,7 @@ const LiveChat = () => {
     const i = setInterval(() => {
       // API Polling
       console.log("API Polling");
-      dispatch(addMessage({ name: generateRandomName(), message: "Hello World" }))
+      dispatch(addMessage({ name: generateRandomName(), message: generateRandomComment() }))
     }, 1500);
     // Always clear the interval
     return () => clearInterval(i);

@@ -6,16 +6,11 @@ import cross_Icon from "../assets/cross.png";
 import voice_Icon from "../assets/microphone.png";
 import notification_Icon from "../assets/bell.png";
 import plus_Icon from "../assets/plus.png";
-import UserContext from "../Context/usercontext";
 import { useDispatch, useSelector } from "react-redux";
 import { gotoHomePage, toggleMenu } from "../utils/appSlice";
-import gsap from "gsap";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import magnifying_glass from "../assets/magnifying-glass.png";
 import { cacheResults, setSearchClicked, setVideos } from "../utils/SearchSlice";
-import { Link } from "react-router-dom";
-import store from "../utils/store";
-import { list } from "postcss";
 
 const Header = () => {
 
@@ -56,7 +51,7 @@ const Header = () => {
         setQuerySuggestion(searchCache[SearchQuery]);
       }
       else {
-        // getSearchSuggestions()
+        getSearchSuggestions()
       }
     }, 200);
 
@@ -97,7 +92,7 @@ const Header = () => {
   //  const {toggleMenu, setToggleMenu} = useContext(UserContext);
 
   const handleClearClick = () => {
-    inputRef.current.focus();
+
     inputRef.current.value = "";
   };
 
